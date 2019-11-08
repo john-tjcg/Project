@@ -27,8 +27,8 @@ def upload_data(strategy_id, instrument_id):
                                             style_cell={'textAlign': 'left', 'height':'40px'},
                                             style_header={'height':'0px'},
                                           ),
-                      dcc.Upload(id='entry'+str(strategy_id)+str(instrument_id), children=html.Div(['Entry:',html.A('Select Files')]),style={'height': '43px', 'lineHeight': '43px','borderWidth': '1px', 'borderStyle': 'dashed','borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'}),
-                      dcc.Upload(id='weight'+str(strategy_id)+str(instrument_id), children=html.Div(['Weight:',html.A('Select Files')]),style={'height': '43px', 'lineHeight': '43px','borderWidth': '1px', 'borderStyle': 'dashed','borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'})   
+                      dcc.Upload(id='entry'+str(strategy_id)+str(instrument_id), children=html.Div(['Entry (see template file for format):',html.A("""Select File""")]),style={'height': '43px', 'lineHeight': '43px','borderWidth': '1px', 'borderStyle': 'dashed','borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'}),
+                      dcc.Upload(id='weight'+str(strategy_id)+str(instrument_id), children=html.Div(['Weight (see template file for format):',html.A("""Select File""")]),style={'height': '43px', 'lineHeight': '43px','borderWidth': '1px', 'borderStyle': 'dashed','borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'})   
                     ], style={'columnCount': 3})
 
 strategy_layout = html.Div([ html.H1(),
@@ -271,7 +271,7 @@ def upload_adjustment(_, change, selected_rows, rows_strategy, n_clicks_timestam
         if(row[0]['Function']=='Stop Gain'):
             div_adjustment = [div_adjustment[0], dcc.Input(id='stop_gain_val', type='number', placeholder='Stop Gain multiplicator', min=1), div_adjustment[-1]]
             return div_adjustment, {'columnCount': 3}, row_info_adj, 'Ok', False
-        div = [dcc.Upload(id='dates', children=html.Div(['Dates:',html.A('Select Files')]),style={'height': '43px', 'lineHeight': '43px','borderWidth': '1px', 'borderStyle': 'dashed','borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'})]
+        div = [dcc.Upload(id='dates', children=html.Div(['Dates (see template file for format):',html.A("""Select File""")]),style={'height': '43px', 'lineHeight': '43px','borderWidth': '1px', 'borderStyle': 'dashed','borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'})]
         if(row[0]['Function']=='Pause'):
             div.append(dcc.Input(id='pause_day_val', type='number', placeholder='Number of days', min=1, step=1))
             div_adjustment = [div_adjustment[0]] + div + [div_adjustment[-1]]

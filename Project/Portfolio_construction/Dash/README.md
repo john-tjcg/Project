@@ -1,8 +1,9 @@
 Remark
 ----------------------
 
-Dash platform won't work since the date file has not been uploaded on github.
+- Dash platform won't work since the date file has not been uploaded on github.
 The data file named 'data.h5' can be find on the Dropbox at C:\Users\Username\Dropbox (TCG)\TCG\3. Research\John\Project\Portfolio_construction\Dash
+- Template files can be find on this folder. These files are the accepted format of excel files to define some features of the portfolio (like entry dates, closing dates, weights by date ...).
 
 Portfolio construction
 ----------------------

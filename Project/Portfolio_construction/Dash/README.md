@@ -28,28 +28,29 @@ Portfolio construction
 
 A portfolio is a set of strategies. A strategy is a set of instruments.
 An instrument is a set of contracts/trades defined by several features.
-\#\#\#\#\# How an instrument is defined ? Here is the instrument's
-arguments: - id: Id of the instrument (typicaly an integer). - data: The
-Dataframe containing the contract features (price, delta, date,
-maturity...). - entry: The date to open a contract. - dte: The minimum
-number of days of the life of the contracts. - position: 1 for long, -1
-for short. - tp: 'f' for future, 'o' for option. - end: 'Roll' to roll
-the contracts opened at entry dates, 'Expiry' to let to expiry. -
-weight: Weight to apply to compute quantity of contracts to open (see
-the following argument). - investment: If 'underlying', quantity of
-contract to open at entry dates will be:
+
+##### How an instrument is defined ? 
+Here is the instrument's arguments: 
+- id: Id of the instrument (typicaly an integer). 
+- data: The Dataframe containing the contract features (price, delta, date,
+maturity...). 
+- entry: The date to open a contract. 
+- dte: The minimum number of days of the life of the contracts. 
+- position: 1 for long, -1 for short. 
+- tp: 'f' for future, 'o' for option. 
+- end: 'Roll' to roll the contracts opened at entry dates, 'Expiry' to let to expiry. 
+- weight: Weight to apply to compute quantity of contracts to open (see the following argument). 
+- investment: If 'underlying', quantity of contract to open at entry dates will be:
 weight\*value\_portfolio/underlying\_price. If 'value':
-weight\*value\_portfolio/premium\_contract\_to\_open. - delta
-(Optional): Target delta of the option contracts to open at entry dates.
+weight\*value\_portfolio/premium\_contract\_to\_open. 
+- delta (Optional): Target delta of the option contracts to open at entry dates.
 - strike (Optional): Target strike of the option contracts to open at
 entry dates.
 
-Here is the instrument's methods to adjust the contracts: -
-keep\_trade(dates): Keep contracts for which open date belongs to
-'dates'. - stop\_date(dates): Close contracts at given 'dates'. -
-stop\_gain(n\_time): Stop trades when the value is 'n\_time' times the
-entry value. - pause(dates, time): Close all the contract openned
-between each dates of 'dates' and 'time' days after.
+Here is the instrument's methods to adjust the contracts: 
+- keep\_trade(dates): Keep contracts for which open date belongs to 'dates'. - stop\_date(dates): Close contracts at given 'dates'. 
+- stop\_gain(n\_time): Stop trades when the value is 'n\_time' times the entry value. 
+- pause(dates, time): Close all the contract openned between each dates of 'dates' and 'time' days after.
 
 ##### Example:
 
@@ -137,24 +138,11 @@ Portfolio:
     portfolio.plot_benchmark(spx_spot)
     portfolio.plot_delta()
 
-Remarks: - The Strategy class contain a method 'delete\_instrument' to
-delete an instrument in the strategy. - Weights can be defined for
-instrument but also for strategy. If 2 strategies has weights of 0.2 and
-0.8. If the first strategy has 2 instruments with a weight of 0.1 and
-0.3. If the second strategy has 1 instruments with a weight of 0.1.
-Instruments of the first strategy will then have a weight of 0.2\*0.1
-and 0.2\*0.3 and instrument of the second strategy will have a weight of
-0.8\*0.1. - Defining weight by strategy allow us to use weight
-optimization algorithm (find the best weight allocation between
-strategies that sum to 1). A file optimal\_weight.py in the folder
-'Portfolio\_construction' contains 2 different functions to compute
-optimal weights : by using Markowitz's theory or by maximizing the daily
-Sharpe Ratio with Genetic algorithm. - The method 'weights' of the class
-Strategy and Portfolio accept Dataframe to change weights depending on
-dates. Call the method 'get\_weight\_regime\_format(id\_instrument)' of
-the class Strategy to get the Dataframe weight to fill. Call the method
-'get\_weight\_regime\_format' of the class Portfolio to get the
-Dataframe weight to fill.
+Remarks: 
+- The Strategy class contain a method 'delete\_instrument' to delete an instrument in the strategy. 
+- Weights can be defined for instrument but also for strategy. If 2 strategies has weights of 0.2 and 0.8. If the first strategy has 2 instruments with a weight of 0.1 and 0.3. If the second strategy has 1 instruments with a weight of 0.1. Instruments of the first strategy will then have a weight of 0.2\*0.1 and 0.2\*0.3 and instrument of the second strategy will have a weight of 0.8\*0.1. 
+- Defining weight by strategy allow us to use weight optimization algorithm (find the best weight allocation between strategies that sum to 1). A file optimal\_weight.py in the folder 'Portfolio\_construction' contains 2 different functions to compute optimal weights : by using Markowitz's theory or by maximizing the daily Sharpe Ratio with Genetic algorithm. 
+- The method 'weights' of the class Strategy and Portfolio accept Dataframe to change weights depending on dates. Call the method 'get\_weight\_regime\_format(id\_instrument)' of the class Strategy to get the Dataframe weight to fill. Call the method 'get\_weight\_regime\_format' of the class Portfolio to get the Dataframe weight to fill.
 
 Start Guide (for users)
 -----------------------
